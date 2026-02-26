@@ -38,6 +38,11 @@ await app.register(fastifySwagger, {
   transform: jsonSchemaTransform,
 });
 
+await app.register(fastifyCors, {
+  origin: ["http://localhost:3000"],
+  credentials: true,
+});
+
 await app.register(fastifyApiReference, {
   routePrefix: "/docs",
   configuration: {
@@ -82,11 +87,6 @@ app.withTypeProvider<ZodTypeProvider>().route({
   handler: () => {
     return { message: "Hello World2" };
   },
-});
-
-await app.register(fastifyCors, {
-  origin: ["http://localhost:3000"],
-  credentials: true,
 });
 
 app.route({

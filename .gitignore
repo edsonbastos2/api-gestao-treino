@@ -14,3 +14,4 @@ node_modules
 .env.test.example
 .env.production.example
 /src/generated/prisma
+./dist
